@@ -3,38 +3,104 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AI Chatbot - Premium Widget</title>
-    <link rel="stylesheet" href="style.css">
+    <meta name="description" content="A premium AI Assistant interface designed for seamless interactions.">
+    <title>NexAI - Next Generation Assistant</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Outfit:wght@300;400;600;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://cdn.jsdelivr.net/npm/remixicon@3.5.0/fonts/remixicon.css" rel="stylesheet">
 </head>
 <body>
-    <!-- 主頁面背景 -->
-    <div class="main-content">
-        <h1>Welcome to My Application</h1>
-        <p>點擊右下角的漂浮按鈕啟動您的專屬 AI 助理。</p>
+    <!-- Animated Background -->
+    <div class="bg-animated">
+        <div class="glow-orb orb-1"></div>
+        <div class="glow-orb orb-2"></div>
+        <div class="glow-orb orb-3"></div>
     </div>
+
+    <!-- Main Navigation -->
+    <nav class="navbar">
+        <div class="logo">
+            <i class="ri-blaze-fill"></i> NexAI
+        </div>
+        <ul class="nav-links">
+            <li><a href="#">Features</a></li>
+            <li><a href="#">Technology</a></li>
+            <li><a href="#">Pricing</a></li>
+        </ul>
+        <button class="nav-btn" onclick="document.getElementById('chatbot-toggle-btn').click();">Try Demo</button>
+    </nav>
+
+    <!-- Hero Section -->
+    <main class="hero">
+        <div class="hero-content">
+            <span class="badge">Introducing NexAI 2.0 ✨</span>
+            <h1 class="hero-title">Experience the future of <span class="text-gradient">conversational AI</span></h1>
+            <p class="hero-subtitle">Engage with a state-of-the-art intelligent assistant built to help you ideate, create, and solve complex problems with unprecedented ease.</p>
+            <div class="hero-actions">
+                <button class="btn-primary" onclick="document.getElementById('chatbot-toggle-btn').click();">
+                    Start Chatting <i class="ri-arrow-right-line"></i>
+                </button>
+                <button class="btn-secondary">
+                    View Documentation
+                </button>
+            </div>
+            
+            <div class="stats">
+                <div class="stat-item">
+                    <span class="stat-value">99%</span>
+                    <span class="stat-label">Accuracy</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">&lt; 100ms</span>
+                    <span class="stat-label">Latency</span>
+                </div>
+                <div class="stat-item">
+                    <span class="stat-value">24/7</span>
+                    <span class="stat-label">Availability</span>
+                </div>
+            </div>
+        </div>
+    </main>
 
     <!-- Chatbot Widget -->
     <div id="chatbot-container" class="chatbot-hidden">
         <div class="chatbot-header">
-            <h3>✨ 智慧助理 (AI Assistant)</h3>
-            <button id="chatbot-close-btn">&times;</button>
+            <div class="header-info">
+                <div class="avatar-container">
+                    <div class="avatar">
+                        <i class="ri-robot-2-fill"></i>
+                    </div>
+                    <div class="status-dot"></div>
+                </div>
+                <div class="title-container">
+                    <h3>NexAI Assistant</h3>
+                    <span class="status-text">Online</span>
+                </div>
+            </div>
+            <button id="chatbot-close-btn"><i class="ri-close-line"></i></button>
         </div>
         <div class="chatbot-messages" id="chatbot-messages">
             <div class="message bot-message">
-                <p>你好！有什麼我可以幫忙的嗎？你可以試著問我一些問題喔！</p>
+                <div class="msg-avatar"><i class="ri-robot-2-fill"></i></div>
+                <div class="msg-bubble">
+                    <p>Hello! I am NexAI. How can I assist you today? You can ask me anything!</p>
+                </div>
             </div>
         </div>
         <div class="chatbot-input">
-            <input type="text" id="chatbot-input-field" placeholder="輸入訊息..." />
-            <button id="chatbot-send-btn">發送</button>
+            <button class="input-action-btn"><i class="ri-attachment-2"></i></button>
+            <input type="text" id="chatbot-input-field" placeholder="Ask NexAI anything..." />
+            <button id="chatbot-send-btn"><i class="ri-send-plane-fill"></i></button>
         </div>
     </div>
 
     <!-- Chatbot Toggle Icon -->
     <div id="chatbot-toggle-btn">
-        <span>💬</span>
+        <i class="ri-chat-smile-3-line"></i>
     </div>
 
-    <script src="script.js"></script>
+    <script src="/static/script.js"></script>
 </body>
 </html>

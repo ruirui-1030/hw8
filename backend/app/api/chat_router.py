@@ -2,8 +2,8 @@ from fastapi import APIRouter
 from pydantic import BaseModel
 import uuid
 
-from app.models.database import get_db
-from app.services.llm_service import generate_response
+from backend.app.models.database import get_db
+from backend.app.services.llm_service import generate_response
 
 router = APIRouter()
 

@@ -23,9 +23,20 @@ document.addEventListener("DOMContentLoaded", () => {
     const addMessage = (text, isUser = false) => {
         const msgDiv = document.createElement("div");
         msgDiv.className = isUser ? "message user-message" : "message bot-message";
+        
+        const avatar = document.createElement("div");
+        avatar.className = "msg-avatar";
+        avatar.innerHTML = isUser ? "" : '<i class="ri-robot-2-fill"></i>';
+
+        const bubble = document.createElement("div");
+        bubble.className = "msg-bubble";
         const p = document.createElement("p");
         p.textContent = text;
-        msgDiv.appendChild(p);
+        bubble.appendChild(p);
+
+        msgDiv.appendChild(avatar);
+        msgDiv.appendChild(bubble);
+
         messagesDiv.appendChild(msgDiv);
         
         // 滾動到最底部
@@ -38,8 +49,18 @@ document.addEventListener("DOMContentLoaded", () => {
     // 協助函數：加入打字中的動畫
     const addTypingIndicator = () => {
         const ind = document.createElement("div");
-        ind.className = "message bot-message typing-indicator";
-        ind.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+        ind.className = "message bot-message";
+        
+        const avatar = document.createElement("div");
+        avatar.className = "msg-avatar";
+        avatar.innerHTML = '<i class="ri-robot-2-fill"></i>';
+
+        const bubble = document.createElement("div");
+        bubble.className = "msg-bubble typing-indicator";
+        bubble.innerHTML = '<div class="typing-dot"></div><div class="typing-dot"></div><div class="typing-dot"></div>';
+
+        ind.appendChild(avatar);
+        ind.appendChild(bubble);
         messagesDiv.appendChild(ind);
         
         setTimeout(() => {
