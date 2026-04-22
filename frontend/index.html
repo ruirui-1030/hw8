@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="zh-TW">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>AI Chatbot - Premium Widget</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <!-- 主頁面背景 -->
+    <div class="main-content">
+        <h1>Welcome to My Application</h1>
+        <p>點擊右下角的漂浮按鈕啟動您的專屬 AI 助理。</p>
+    </div>
+
+    <!-- Chatbot Widget -->
+    <div id="chatbot-container" class="chatbot-hidden">
+        <div class="chatbot-header">
+            <h3>✨ 智慧助理 (AI Assistant)</h3>
+            <button id="chatbot-close-btn">&times;</button>
+        </div>
+        <div class="chatbot-messages" id="chatbot-messages">
+            <div class="message bot-message">
+                <p>你好！有什麼我可以幫忙的嗎？你可以試著問我一些問題喔！</p>
+            </div>
+        </div>
+        <div class="chatbot-input">
+            <input type="text" id="chatbot-input-field" placeholder="輸入訊息..." />
+            <button id="chatbot-send-btn">發送</button>
+        </div>
+    </div>
+
+    <!-- Chatbot Toggle Icon -->
+    <div id="chatbot-toggle-btn">
+        <span>💬</span>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
