@@ -1,19 +1,31 @@
-import asyncio
+import os
+import google.generativeai as genai
+from dotenv import load_dotenv
+
+# 載入環境變數
+load_dotenv()
+
+# 設定 Gemini API Key
+GEMINI_API_KEY = os.getenv("GEMINI_API_KEY")
+
+if GEMINI_API_KEY:
+    genai.configure(api_key=GEMINI_API_KEY)
+    # 選擇使用的模型，這裡使用最新的 gemini-1.5-flash
+    model = genai.GenerativeModel('gemini-1.5-flash') 
+else:
+    model = None
 
 async def generate_response(prompt: str) -> str:
     """
-    此為模擬回覆 (Mock) 功能。
-    為了作業實作用，暫不串接真實 OpenAI。
+    呼叫真實的 Gemini API 取得回覆。
     """
-    # 模擬 1.5 秒的思考延遲
-    await asyncio.sleep(1.5)
+    if not model:
+        return "系統錯誤：找不到 GEMINI_API_KEY。請確保已在 .env 檔案中設定您的 API Key。"
     
-    prompt_lower = prompt.lower()
-    
-    if "你好" in prompt_lower or "hi" in prompt_lower or "hello" in prompt_lower:
-        return "你好！我是你的專屬 AI 助理。很高興為你服務！請問今天有什麼我可以幫忙的？"
-    
-    if "功能" in prompt_lower or "能做什麼" in prompt_lower:
-        return "我目前是一個初階演練模型，我示範了如何透過 FastAPI 與原生前端建立順暢的 Chat Widget，包含對話紀錄與模擬思考效果！"
-    
-    return f"收到您的訊息了！您剛剛提到：「{prompt}」。\n(*這是一則由系統產生的預設測試回覆*)"
+    try:
+        # 使用 generate_content_async 進行非同步呼叫
+        response = await model.generate_content_async(prompt)
+        return response.text
+    except Exception as e:
+        print(f"Gemini API 錯誤: {e}")
+        return f"抱歉，連線到 Gemini API 時發生錯誤：{str(e)}"
